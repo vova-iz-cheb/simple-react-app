@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import rootReducer from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { App } from './containers/App';
 
 const mymiddle = store => next => action => {
   const n = next(action);
@@ -13,6 +15,13 @@ const mymiddle = store => next => action => {
   return n;
 };
 
-// const store = createStore(rootReducer, applyMiddleware(mymiddle));
+const store = createStore(rootReducer, applyMiddleware(mymiddle));
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
+  document.getElementById('root')
+);

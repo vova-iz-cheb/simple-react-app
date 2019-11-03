@@ -16,7 +16,7 @@ module.exports.login = (req, res) => {
   p.then(user => {
     const hash = createHash(password, user.salt);
     if (hash === user.hash) {
-      req.session.id = user._id; // записываем в сессию id юзера
+      req.session._id = user._id; // записываем в сессию id юзера
       res.send(user);
     } else {
       return Promise.reject("Пароли не совпадают!");
@@ -37,11 +37,15 @@ module.exports.userdata = (req, res) => {
 
   if (id) {
     User.findById(id, (err, user) => {
-      if (err) return console.log(err);
+      if (err) {
+        console.log(err);
+        res.send({ error: true });
+        return;
+      }
       if (!user) res.send({ error: true });
       else res.send(user);
     });
+  } else {
+    res.send({ error: true });
   }
-
-  res.send({ error: true });
 };

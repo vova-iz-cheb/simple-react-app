@@ -38,7 +38,7 @@ module.exports.create = (req, res) => {
     newUser
       .save()
       .then(user => {
-        req.session.id = user._id; // записываем в сессию login
+        req.session._id = user._id; // записываем в сессию login
         res.send(user);
       })
       .catch(err => {

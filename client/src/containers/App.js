@@ -1,66 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Header } from '../components/Header';
+import { Main } from '../components/Main';
+import { Home } from './Home';
+import { Registration } from './Registration';
+import { Login } from './Login';
+import { userInit } from '../actions/userActions';
+import '../styles/style.scss';
 
-export default () => {
-  // const login = useSelector(state => state.user.login);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if(!login && localStorage.getItem('userId')) {
-  //     fetch('/api/userdata', {
-
-  //     })
-  //   }
-  // });
-
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+export const App = () => {
+  const login = useSelector(store => store.user.login);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    document.title = 'PRIVET';
+    if (!login && localStorage.getItem('userId')) {
+      fetch('/api/userdata', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          id: localStorage.getItem('userId'),
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.error) localStorage.removeItem('userId');
+          else {
+            dispatch(
+              userInit({
+                id: result._id,
+                login: result.login,
+              })
+            );
+          }
+        })
+        .catch(err => console.log('Error: ', err));
+    }
   });
 
-  const submitHandler = e => {
-    e.preventDefault();
-    const body = JSON.stringify({
-      login,
-      password,
-    });
-
-    fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body,
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.error) setError(result.error);
-        else alert(result.login, result.id);
-      })
-      .catch(err => {
-        console.log(err);
-        setError('Что-то пошло не так!');
-      });
-  };
-
   return (
-    <div>
-      <h1>Hello world</h1>
-      {error || <div>{error}</div>}
-      <form action="">
-        <input type="text" name="login" onChange={e => setLogin(e.target.value)} value={login} />
-        <input
-          type="password"
-          name="password"
-          onChange={e => setPassword(e.target.value)}
-          value={password}
-        />
-        <input type="submit" onClick={submitHandler} />
-      </form>
-      <hr />
-    </div>
+    <Fragment>
+      <Header />
+      <Main>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/registration">
+            <Registration />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </Main>
+    </Fragment>
   );
 };

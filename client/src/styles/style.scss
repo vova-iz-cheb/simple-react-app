@@ -1,0 +1,62 @@
+@import 'bootstrap-reboot.min';
+@import 'bootstrap-grid.min';
+
+// placeholders
+%clear-list {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+%button {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+%input {
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 10px;
+  transition: box-shadow .3s;
+  &:focus {
+    box-shadow: 0 0 2px 2px red;
+  }
+}
+
+html {
+  height: 100%;
+}
+
+body, #root {
+  min-height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.grow1 {
+  flex-grow: 1;
+}
+
+// my styles
+body {
+  font-family: sans-serif;
+}
+
+.error {
+  color: red;
+  border: 1px solid red;
+  margin: 1rem;
+}
