@@ -1,0 +1,15 @@
+{
+  "app": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "mongoose": {
+    "uri": "mongodb://localhost:27017/newsdb",
+    "options": {
+      "useNewUrlParser": true,
+      "useUnifiedTopology": true,
+      "useFindAndModify": false
+    }
+  },
+  "secret": "i am a frontend developer"
+}

@@ -20,7 +20,7 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     proxy: {
-      '/api/user': 'http://localhost:3000',
+      '/api': 'http://localhost:3000',
     },
   },
 
