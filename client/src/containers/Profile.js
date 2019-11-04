@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ChangeAvatar } from './ChangeAvatar';
+import { ChangePassword } from './ChangePassword';
+import { DeleteAccount } from './DeleteAccount';
 import { getStringFromDate } from '../utils/getStringFromDate';
 
 export const Profile = () => {
@@ -16,6 +18,8 @@ export const Profile = () => {
       <p>Дата регистрации: {getStringFromDate(regDate)}</p>
 
       <ChangeAvatar />
+      <ChangePassword />
+      <DeleteAccount />
     </div>
   );
 };
