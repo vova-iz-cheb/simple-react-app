@@ -11,12 +11,15 @@ const user = (state = initialState, action) => {
       return {
         login: action.user.login,
         id: action.user.id,
+        reg_date: action.user.reg_date,
+        avatar: action.user.avatar,
       };
 
     case LOGOUT:
       return {
         login: '',
         id: '',
+        reg_date: '',
       };
 
     default:

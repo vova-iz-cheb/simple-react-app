@@ -9,6 +9,10 @@ const userSchema = new Schema({
   reg_date: {
     type: Date,
     default: Date.now
+  },
+  avatar: {
+    type: String,
+    default: "man2"
   }
 });
 

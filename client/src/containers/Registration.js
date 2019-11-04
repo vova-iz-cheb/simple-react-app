@@ -42,6 +42,8 @@ export const Registration = () => {
             userInit({
               id: result._id,
               login: result.login,
+              reg_date: result.reg_date,
+              avatar: result.avatar,
             })
           );
           history.push('/');

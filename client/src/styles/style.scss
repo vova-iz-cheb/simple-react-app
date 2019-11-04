@@ -33,11 +33,11 @@
   }
 }
 
-html {
+html, body {
   height: 100%;
 }
 
-body, #root {
+#root {
   min-height: 100%;
 }
 
@@ -58,5 +58,20 @@ body {
 .error {
   color: red;
   border: 1px solid red;
-  margin: 1rem;
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+img.active {
+  outline: 2px solid navy;
+}
+
+.avatarList {
+  @extend %clear-list;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    margin: 3px;
+  }
 }

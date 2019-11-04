@@ -5,6 +5,7 @@ import { logout } from '../actions/userActions';
 
 export const UserBox = props => {
   const login = useSelector(store => store.user.login);
+  const avatar = useSelector(store => store.user.avatar);
   const dispatch = useDispatch();
 
   let history = useHistory();
@@ -28,9 +29,11 @@ export const UserBox = props => {
 
   let inner;
   if (login) {
+    const src = '/img/' + avatar + '.jpg';
     inner = (
       <div>
-        {login} |
+        <img src={src} alt="Avatar" />
+        <NavLink to="/profile">{login}</NavLink> |
         <a href="" onClick={onClickHandler}>
           logout
         </a>

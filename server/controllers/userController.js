@@ -49,3 +49,29 @@ module.exports.create = (req, res) => {
     res.send({ error });
   });
 };
+
+module.exports.change = (req, res) => {
+  const { id, avatar, oldpassword, newpassword, action } = req.body;
+
+  if (action == "avatar") {
+    if (!id || !avatar)
+      return res.send({ Error: "Отсутствуют требуемые данные." });
+
+    User.findByIdAndUpdate(
+      id,
+      { avatar },
+      { returnOriginal: false },
+      (err, user) => {
+        if (err) {
+          console.log(err);
+          return res.send({ Error: "Ошибка Баз Данных." });
+        }
+
+        res.send(user);
+      }
+    );
+  } else if (action == "password") {
+  } else {
+    res.send({ Error: "Не указано действие" });
+  }
+};
