@@ -36,14 +36,24 @@ export const DeleteAccount = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.error) setError(result.error);
+        if (result.error) {
+          setError(result.error);
+          setTimeout(() => {
+            setError('');
+          }, 5000);
+        }
         if (result.success) {
           localStorage.removeItem('userId');
           dispatch(logout);
           history.push('/');
         }
       })
-      .catch(err => console.log('Error: ', err));
+      .catch(err => {
+        setError('Сервер не доспупен, приносим свои извинения.');
+        setTimeout(() => {
+          setError('');
+        }, 5000);
+      });
   };
 
   return (

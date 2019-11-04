@@ -36,6 +36,7 @@ app.use(
 //Routers
 const commonRouter = require("./routers/commonRouter.js");
 const userRouter = require("./routers/userRouter.js");
+const newsRouter = require("./routers/newsRouter.js");
 
 app.use(bodyParser.json());
 
@@ -43,6 +44,7 @@ app.use(bodyParser.json());
 // app.use('/', express.static(__dirname + '/public'));
 
 app.use("/api/users", userRouter);
+app.use("/api/news", newsRouter);
 app.use("/api", commonRouter);
 
 app.use((req, res) => {

@@ -30,16 +30,29 @@ export const ChangePassword = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.error) setError(result.error);
+        if (result.error) {
+          setError(result.error);
+          setTimeout(() => {
+            setError('');
+          }, 3000);
+        }
         if (result.success) {
           setSuccess(result.success);
           setError('');
+          setOldpassword('');
+          setNewpassword('');
+          setNewpassword2('');
           setTimeout(() => {
             setSuccess('');
           }, 5000);
         }
       })
-      .catch(err => console.log('Error: ', err));
+      .catch(err => {
+        setError('Сервер не доспупен, приносим свои извинения.');
+        setTimeout(() => {
+          setError('');
+        }, 5000);
+      });
   };
 
   return (

@@ -47,7 +47,9 @@ export const ChangeAvatar = () => {
           );
         }
       })
-      .catch(err => console.log('Error: ', err));
+      .catch(err => {
+        alert('Сервер не допуспен!');
+      });
   };
 
   return (
