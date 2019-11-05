@@ -15,7 +15,7 @@ export const Registration = () => {
 
   useEffect(() => {
     document.title = 'Регистрация';
-  });
+  }, []);
 
   const submitHandler = e => {
     e.preventDefault();

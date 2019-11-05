@@ -6,10 +6,13 @@ import { Main } from '../components/Main';
 import { About } from '../components/About';
 import { Footer } from '../components/Footer';
 import { NotFound } from '../components/NotFound';
+
 import { Home } from './Home';
+import { SingleNews } from './SingleNews';
 import { Registration } from './Registration';
 import { Login } from './Login';
 import { Profile } from './Profile';
+import { CreateNewsForm } from './CreateNewsForm';
 import { userInit } from '../actions/userActions';
 import '../styles/style.scss';
 
@@ -64,11 +67,15 @@ export const App = () => {
           <Route path="/about">
             <About />
           </Route>
-          {login && (
-            <Route path="/profile">
-              <Profile />
-            </Route>
-          )}
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/news/create">
+            <CreateNewsForm />
+          </Route>
+          <Route path="/news/:id">
+            <SingleNews />
+          </Route>
           <Route>
             <NotFound />
           </Route>

@@ -9,7 +9,8 @@ module.exports.getAll = (req, res) => {
 };
 
 module.exports.getById = (req, res) => {
-  News.findOne({}, (err, news) => {
+  if (!req.params["id"]) return res.send(400);
+  News.findOne({ _id: req.params["id"] }, (err, news) => {
     if (err) return console.log(err);
     res.send(news);
   });
@@ -140,9 +141,10 @@ module.exports.change = async (req, res) => {
       content,
       changed_date: new Date()
     },
+    { new: true },
     (err, result) => {
       if (err) return console.log(err);
-      res.send({ success: true });
+      res.send(result);
     }
   );
 };

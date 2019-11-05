@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 export const ChangePassword = () => {
   const [error, setError] = useState('');
+  const [isFetching, setFetching] = useState(false);
   const [success, setSuccess] = useState('');
   const [oldpassword, setOldpassword] = useState('');
   const [newpassword, setNewpassword] = useState('');
@@ -12,6 +13,8 @@ export const ChangePassword = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    setFetching(true);
 
     const body = JSON.stringify({
       id,
@@ -44,14 +47,18 @@ export const ChangePassword = () => {
           setNewpassword2('');
           setTimeout(() => {
             setSuccess('');
-          }, 5000);
+          }, 3000);
         }
+
+        setFetching(false);
       })
       .catch(err => {
         setError('Сервер не доспупен, приносим свои извинения.');
         setTimeout(() => {
           setError('');
-        }, 5000);
+        }, 3000);
+
+        setFetching(false);
       });
   };
 
@@ -91,7 +98,7 @@ export const ChangePassword = () => {
       />
       <br />
 
-      <input type="submit" value="Изменить" onClick={handleSubmit} />
+      <input type="submit" value="Изменить" onClick={handleSubmit} disabled={isFetching} />
     </form>
   );
 };

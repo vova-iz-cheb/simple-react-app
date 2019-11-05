@@ -41,11 +41,15 @@ const newsRouter = require("./routers/newsRouter.js");
 app.use(bodyParser.json());
 
 // Стили, картинки, скрипты в папке public
-// app.use('/', express.static(__dirname + '/public'));
+app.use("/", express.static(__dirname + "/public"));
 
 app.use("/api/users", userRouter);
 app.use("/api/news", newsRouter);
 app.use("/api", commonRouter);
+
+app.use("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 app.use((req, res) => {
   res.status(400).send("Not found");

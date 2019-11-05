@@ -14,7 +14,7 @@ export const Login = () => {
 
   useEffect(() => {
     document.title = 'Аутентификация';
-  });
+  }, []);
 
   const submitHandler = e => {
     e.preventDefault();

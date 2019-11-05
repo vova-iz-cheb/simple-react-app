@@ -20,6 +20,8 @@ export const UserBox = props => {
       .then(result => {
         if (result.success) {
           localStorage.removeItem('userId');
+          localStorage.removeItem('createNewsTitle');
+          localStorage.removeItem('createNewsContent');
           dispatch(logout);
           history.push('/');
         }

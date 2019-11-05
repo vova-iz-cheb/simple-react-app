@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserBox } from '../Containers/UserBox';
-import { Nav } from './Nav';
+import { Nav } from '../Containers/Nav';
 
 export const Header = () => {
   return (

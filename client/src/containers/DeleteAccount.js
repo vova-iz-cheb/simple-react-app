@@ -6,6 +6,7 @@ import { logout } from '../actions/userActions';
 export const DeleteAccount = () => {
   const [error, setError] = useState('');
   const [password, setPassword] = useState('');
+  const [isFetching, setFetching] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -15,6 +16,8 @@ export const DeleteAccount = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    setFetching(true);
 
     const conf = confirm(
       'Это действие нельзя обратить. Вы действительно ходите удалить свой аккаунт?'
@@ -40,19 +43,23 @@ export const DeleteAccount = () => {
           setError(result.error);
           setTimeout(() => {
             setError('');
-          }, 5000);
+          }, 3000);
         }
         if (result.success) {
           localStorage.removeItem('userId');
           dispatch(logout);
           history.push('/');
         }
+
+        setFetching(false);
       })
       .catch(err => {
         setError('Сервер не доспупен, приносим свои извинения.');
         setTimeout(() => {
           setError('');
-        }, 5000);
+        }, 3000);
+
+        setFetching(false);
       });
   };
 
@@ -71,7 +78,7 @@ export const DeleteAccount = () => {
       />
       <br />
 
-      <input type="submit" value="Удалить" onClick={handleSubmit} />
+      <input type="submit" value="Удалить" onClick={handleSubmit} disabled={isFetching} />
     </form>
   );
 };

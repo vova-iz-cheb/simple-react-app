@@ -4,6 +4,7 @@ import { userInit } from '../actions/userActions';
 
 export const ChangeAvatar = () => {
   const [error, setError] = useState('');
+  const [isFetching, setFetching] = useState(false);
 
   const id = useSelector(store => store.user.id);
   const ava = useSelector(store => store.user.avatar);
@@ -18,6 +19,8 @@ export const ChangeAvatar = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    setFetching(true);
 
     const body = JSON.stringify({
       id,
@@ -34,7 +37,6 @@ export const ChangeAvatar = () => {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
         if (result.error) setError(result.error);
         else {
           dispatch(
@@ -46,9 +48,13 @@ export const ChangeAvatar = () => {
             })
           );
         }
+
+        setFetching(false);
       })
       .catch(err => {
         alert('Сервер не допуспен!');
+
+        setFetching(false);
       });
   };
 
@@ -148,7 +154,7 @@ export const ChangeAvatar = () => {
           </a>
         </li>
       </ul>
-      <input type="submit" value="Изменить" onClick={handleSubmit} />
+      <input type="submit" value="Изменить" onClick={handleSubmit} disabled={isFetching} />
     </form>
   );
 };
