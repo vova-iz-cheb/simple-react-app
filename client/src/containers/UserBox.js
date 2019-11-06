@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../actions/userActions';
+import { editNews } from '../actions/newsActions';
 
 export const UserBox = props => {
   const login = useSelector(store => store.user.login);
@@ -22,6 +23,7 @@ export const UserBox = props => {
           localStorage.removeItem('userId');
           localStorage.removeItem('createNewsTitle');
           localStorage.removeItem('createNewsContent');
+          dispatch(editNews(false));
           dispatch(logout);
           history.push('/');
         }
