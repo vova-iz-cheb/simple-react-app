@@ -46,12 +46,12 @@ export const EditBar = props => {
   };
 
   return (
-    <div>
+    <div className="editbar">
       <a href="" onClick={editNewsHandler}>
-        изменить
+        <i className="icon-pencil fa-2x editbar__edit"></i>
       </a>
       <a href="" onClick={deleteNewsHandler}>
-        удалить
+        <i className="icon-trash-empty fa-2x editbar__delete"></i>
       </a>
     </div>
   );

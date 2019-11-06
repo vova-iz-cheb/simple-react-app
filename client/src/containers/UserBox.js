@@ -34,21 +34,27 @@ export const UserBox = props => {
     const src = '/img/' + avatar + '.jpg';
     inner = (
       <div>
-        <img src={src} alt="Avatar" />
-        <NavLink to="/profile">{login}</NavLink> |
-        <a href="" onClick={onClickHandler}>
+        <img src={src} alt="Avatar" className="avatar" />
+        <NavLink to="/profile" className="nav__link">
+          {login}
+        </NavLink>{' '}
+        <a href="" onClick={onClickHandler} className="nav__link">
           logout
         </a>
       </div>
     );
   } else {
     inner = (
-      <ul>
+      <ul className="auth__list">
         <li>
-          <NavLink to="/login">Войти</NavLink>
+          <NavLink to="/login" className="nav__link">
+            Войти
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/registration">Регистрация</NavLink>
+          <NavLink to="/registration" className="nav__link">
+            Регистрация
+          </NavLink>
         </li>
       </ul>
     );

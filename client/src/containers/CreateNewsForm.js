@@ -72,13 +72,25 @@ export const CreateNewsForm = () => {
         {error && <div className="error">{error}</div>}
         <label htmlFor="title">Заголовок*</label>
         <br />
-        <input id="title" type="text" value={title} onChange={onChangeTitle} />
+        <input className="w100" id="title" type="text" value={title} onChange={onChangeTitle} />
         <br />
         <label htmlFor="content">Содержимое*</label>
         <br />
-        <textarea id="content" value={content} onChange={onChangeContent}></textarea>
+        <textarea
+          rows="10"
+          className="w100"
+          id="content"
+          value={content}
+          onChange={onChangeContent}
+        ></textarea>
         <br />
-        <input type="submit" onClick={onSubmitHandler} value="Создать" disabled={isLoading} />
+        <input
+          className="btn btn-green"
+          type="submit"
+          onClick={onSubmitHandler}
+          value="Создать"
+          disabled={isLoading}
+        />
       </form>
     </>
   );

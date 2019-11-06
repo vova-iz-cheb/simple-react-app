@@ -7,19 +7,24 @@ export const Nav = () => {
 
   return (
     <nav className="nav">
-      <ul>
+      <i className="icon-menu fa-2x nav__toggler"></i>
+      <ul className="nav__list">
         <li>
-          <NavLink exact to="/">
+          <NavLink exact to="/" className="nav__link">
             Home
           </NavLink>
         </li>
         {login && (
           <li>
-            <NavLink to="/news/create">Create News</NavLink>
+            <NavLink to="/news/create" className="nav__link">
+              Create News
+            </NavLink>
           </li>
         )}
         <li>
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about" className="nav__link">
+            About
+          </NavLink>
         </li>
       </ul>
     </nav>

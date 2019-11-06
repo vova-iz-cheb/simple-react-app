@@ -77,7 +77,7 @@ export const Registration = () => {
         onChange={e => setPassword2(e.currentTarget.value)}
       />
       <br />
-      <input type="submit" value="Регистрация" onClick={submitHandler} />
+      <input className="btn btn-green" type="submit" value="Регистрация" onClick={submitHandler} />
     </form>
   );
 };

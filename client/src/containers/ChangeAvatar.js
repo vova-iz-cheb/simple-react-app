@@ -154,7 +154,13 @@ export const ChangeAvatar = () => {
           </a>
         </li>
       </ul>
-      <input type="submit" value="Изменить" onClick={handleSubmit} disabled={isFetching} />
+      <input
+        className="btn btn-green"
+        type="submit"
+        value="Изменить"
+        onClick={handleSubmit}
+        disabled={isFetching}
+      />
     </form>
   );
 };

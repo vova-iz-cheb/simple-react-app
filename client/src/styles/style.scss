@@ -1,5 +1,15 @@
 @import 'bootstrap-reboot.min';
 @import 'bootstrap-grid.min';
+@import 'fontello';
+
+//color
+$green: #03cc12;
+$lightgreen: #c0ffbc;
+$darkgreen: #012502;
+$red: #e83232;
+$lightred: #ff000014;
+$darkred: #530000;
+
 
 // placeholders
 %clear-list {
@@ -13,23 +23,26 @@
   display: inline-block;
   background-color: transparent;
   border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px 10px;
   vertical-align: middle;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
   outline: none;
   user-select: none;
+  transition: all .25s;
   cursor: pointer;
 }
 
 %input {
-  border: 0;
+  border: 1px solid $green;
   border-radius: 5px;
   outline: none;
-  padding-left: 10px;
+  padding: 5px 5px 5px 10px;
   transition: box-shadow .3s;
   &:focus {
-    box-shadow: 0 0 2px 2px red;
+    box-shadow: 0 0 2px 2px $green;
   }
 }
 
@@ -39,9 +52,6 @@ html, body {
 
 #root {
   min-height: 100%;
-}
-
-#root {
   display: flex;
   flex-direction: column;
 }
@@ -55,30 +65,215 @@ body {
   font-family: sans-serif;
 }
 
-.error {
-  color: red;
-  border: 1px solid red;
-  margin: 1rem 0;
-  padding: 10px;
+.header {
+  background-color: $lightgreen;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-.success {
-  color: rgb(39, 184, 26);
-  border: 1px solid rgb(39, 184, 26);
-  margin: 1rem 0;
-  padding: 10px;
+.nav {
+  position: relative;
+  &:hover .nav__list {
+    display: block;
+  }
+  &:hover .nav__toggler {
+    color: $green;
+  }
+
+  &__toggler {
+    color: $darkgreen;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  &__list {
+    @extend %clear-list;
+    z-index: 10;
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border: 1px solid $darkgreen;
+  }
+
+  &__link {
+    @extend %button;
+    color: $green;
+    &:hover {
+      color: $darkgreen;
+      text-decoration: none;
+    }
+    &.active {
+      color: #fff;
+      background-color: $darkgreen;
+    }
+  }
+
+  .nav__link {
+    width: 100%;
+    border-radius: 0;
+  }
 }
 
-img.active {
-  outline: 2px solid navy;
+.avatar {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 1px $green;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  margin-right: 10px;
 }
+
+.auth__list {
+  @extend %clear-list;
+  display: flex;
+}
+
+@media(min-width: 768px) {
+  .nav {
+    &:hover .nav__list {
+      display: flex;
+    }
+
+    &__toggler {
+      display: none;
+    }
+
+    &__list {
+      display: flex;
+      position: relative;
+      background-color: transparent;
+      border: 0;
+    }
+
+    .nav__link {
+      border-radius: 5px;
+    }
+  }
+}
+
+.main {
+  margin-bottom: 1rem;
+}
+
+.news {
+  &__list {
+    @extend %clear-list;
+  }
+
+  &__link {
+    color: $green;
+    &:hover {
+      color: $darkgreen;
+    }
+  }
+}
+
+.editbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &__edit {
+    color: $green;
+    &:hover {
+      color: $darkgreen;
+    }
+  }
+  &__delete {
+    color: $red;
+    &:hover {
+      color: $darkred;
+    }
+  }
+}
+
+//
 
 .avatarList {
   @extend %clear-list;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 
   li {
-    margin: 3px;
+    margin: 5px;
   }
+
+  img.active {
+    display: inline-block;
+    box-shadow: 0 0 5px 1px $green;
+  }
+}
+
+.footer {
+  padding-top: 1rem;
+  background-color: $darkgreen;
+  color: #fff;
+}
+
+//
+
+.error, .success {
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+.error {
+  background-color: $lightred;
+  color: $red;
+  border-color: $red;
+}
+
+.success {
+  background-color: $lightgreen;
+  color: $green;
+  border-color: $green;
+}
+
+label, input, textarea {
+  margin-bottom: 10px;
+}
+
+.btn {
+  @extend %button;
+  margin-right: 10px;
+}
+
+.btn-green {
+  color: $green;
+  border: 1px solid $green;
+  &:hover {
+    color: $darkgreen;
+    border-color: $darkgreen;
+    background-color: $green;
+  }
+  &:active {
+    background-color: $darkgreen;
+    color: #fff;
+  }
+}
+.btn-red {
+  color: $red;
+  border: 1px solid $red;
+  &:hover {
+    color: $darkred;
+    border-color: $darkred;
+    background-color: $lightred;
+  }
+  &:active {
+    background-color: $darkred;
+    color: #fff;
+  }
+}
+
+textarea, input[type=text], input[type=password] {
+  @extend %input;
+}
+
+.w100 {
+  width: 100%;
 }

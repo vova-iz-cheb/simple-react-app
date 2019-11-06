@@ -68,17 +68,23 @@ export const DeleteAccount = () => {
       <h2>Удалить аккаунт:</h2>
       {error ? <div className="error">{error}</div> : null}
 
-      <label htmlFor="oldpassword">Пароль</label>
+      <label htmlFor="dpassword">Пароль</label>
       <br />
       <input
         type="password"
-        id="password"
+        id="dpassword"
         value={password}
         onChange={e => setPassword(e.currentTarget.value)}
       />
       <br />
 
-      <input type="submit" value="Удалить" onClick={handleSubmit} disabled={isFetching} />
+      <input
+        className="btn btn-red"
+        type="submit"
+        value="Удалить"
+        onClick={handleSubmit}
+        disabled={isFetching}
+      />
     </form>
   );
 };

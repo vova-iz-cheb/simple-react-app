@@ -7,12 +7,14 @@ export const NewsList = props => {
 
   if (news.length) {
     return (
-      <ul>
+      <ul className="news__list">
         {news.map(item => (
           <li key={item._id}>
             <article>
               <h2>
-                <NavLink to={'/news/' + item._id}>{item.title}</NavLink>
+                <NavLink className="news__link" to={'/news/' + item._id}>
+                  {item.title}
+                </NavLink>
               </h2>
               <div>
                 <p>{item.content}</p>

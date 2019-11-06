@@ -86,7 +86,7 @@ export const SingleNews = () => {
       {isLoading && <LoadBox />}
       {!isLoading && !error && (
         <article>
-          <h2>{title}</h2>
+          <h2 style={{ marginRight: 100 }}>{title}</h2>
           <div>
             <p>{content}</p>
           </div>

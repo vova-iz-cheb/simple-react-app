@@ -98,7 +98,13 @@ export const ChangePassword = () => {
       />
       <br />
 
-      <input type="submit" value="Изменить" onClick={handleSubmit} disabled={isFetching} />
+      <input
+        className="btn btn-green"
+        type="submit"
+        value="Изменить"
+        onClick={handleSubmit}
+        disabled={isFetching}
+      />
     </form>
   );
 };

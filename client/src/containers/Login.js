@@ -66,7 +66,7 @@ export const Login = () => {
         onChange={e => setPassword(e.currentTarget.value)}
       />
       <br />
-      <input type="submit" value="Войти" onClick={submitHandler} />
+      <input className="btn btn-green" type="submit" value="Войти" onClick={submitHandler} />
     </form>
   );
 };
