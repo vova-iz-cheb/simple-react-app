@@ -4,7 +4,7 @@ import {
   FETCHING_ALL_NEWS_FAILED,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
   news: [],
   error: '',
   isFetching: false,

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`News List with 2 articles Snapshot 1`] = `
+<ul
+  className="news__list"
+>
+  <li
+    key="1"
+  >
+    <article>
+      <h2>
+        <NavLink
+          className="news__link"
+          to="/news/1"
+        >
+          Title
+        </NavLink>
+      </h2>
+      <div>
+        <p>
+          Content
+        </p>
+      </div>
+    </article>
+  </li>
+  <li
+    key="2"
+  >
+    <article>
+      <h2>
+        <NavLink
+          className="news__link"
+          to="/news/2"
+        >
+          Title2
+        </NavLink>
+      </h2>
+      <div>
+        <p>
+          Content2
+        </p>
+      </div>
+    </article>
+  </li>
+</ul>
+`;
+
+exports[`empty NewsList Snapshot 1`] = `
+<p>
+  К сожалению нет новостей.
+</p>
+`;

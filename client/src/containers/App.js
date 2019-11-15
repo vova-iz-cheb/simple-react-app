@@ -7,7 +7,7 @@ import { About } from '../components/About';
 import { Footer } from '../components/Footer';
 import { NotFound } from '../components/NotFound';
 
-import { Home } from './Home';
+import Home from './Home';
 import { SingleNews } from './SingleNews';
 import { Registration } from './Registration';
 import { Login } from './Login';

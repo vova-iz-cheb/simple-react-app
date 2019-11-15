@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home container Home container error Snapshot 1`] = `
+<Fragment>
+  <h1>
+    News:
+  </h1>
+  <div
+    className="error"
+  >
+    Ошибка загрузки, попробовать еще раз
+     
+    <button
+      onClick={[Function]}
+    >
+      again
+    </button>
+  </div>
+</Fragment>
+`;
+
+exports[`Home container Home container fetch data Snapshot 1`] = `
+<Fragment>
+  <h1>
+    News:
+  </h1>
+  <NewsList
+    news={
+      Array [
+        1,
+      ]
+    }
+  />
+</Fragment>
+`;
+
+exports[`Home container Home container initial Snapshot 1`] = `
+<Fragment>
+  <h1>
+    News:
+  </h1>
+  <NewsList
+    news={Array []}
+  />
+</Fragment>
+`;
+
+exports[`Home container Home container loading Snapshot 1`] = `
+<Fragment>
+  <h1>
+    News:
+  </h1>
+  <LoadBox />
+</Fragment>
+`;
+
+exports[`Home container Home container loading after error Snapshot 1`] = `
+<Fragment>
+  <h1>
+    News:
+  </h1>
+  <div
+    className="error"
+  >
+    Ошибка загрузки, попробовать еще раз
+     
+    <button
+      onClick={[Function]}
+    >
+      again
+    </button>
+  </div>
+  <LoadBox />
+</Fragment>
+`;
